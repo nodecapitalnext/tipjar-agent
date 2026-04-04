@@ -1,0 +1,26 @@
+{
+  "name": "tipjar-agent",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@coinbase/cdp-sdk": "^1.46.1",
+    "@neynar/nodejs-sdk": "^3.137.2",
+    "@solana/kit": "^5.5.1",
+    "bs58": "^6.0.0",
+    "next": "16.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "viem": "^2.47.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
