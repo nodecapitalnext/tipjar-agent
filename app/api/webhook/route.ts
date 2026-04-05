@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     console.log("Webhook body keys:", Object.keys(body));
-    console.log("Webhook preview:", JSON.stringify(body).slice(0, 800));
+    console.log("Webhook FULL:", JSON.stringify(body).slice(0, 2000));
 
     const results = [];
     const allLogs: Array<Record<string, unknown>> = [];
