@@ -12,12 +12,11 @@ let lastProcessedBlock: bigint | null = null;
 const MIN_THRESHOLD = BigInt("100000000000000");
 
 export async function GET(req: NextRequest) {
-  // Verify cron secret
+  // Allow Vercel cron (no auth header) or manual with secret
   const authHeader = req.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (authHeader && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
   return await checkTips();
 }
 
@@ -34,7 +33,7 @@ async function checkTips() {
 
     // First run: start from last 100 blocks
     if (!lastProcessedBlock) {
-      lastProcessedBlock = latestBlock - 100n;
+      lastProcessedBlock = latestBlock - 7200n; // ~24 hours
     }
 
     // Don't re-process if no new blocks
